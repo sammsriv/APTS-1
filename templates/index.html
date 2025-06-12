@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Boston House Price Prediction</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f0f0f0;
+            padding: 50px;
+        }
+        .container {
+            background: white;
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Boston House Price Predictor</h2>
+        <form action="/predict" method="POST">
+            <label>Average number of rooms (rm)</label>
+            <input type="text" name="rm" required>
+            <label>% lower status population (lstat)</label>
+            <input type="text" name="lstat" required>
+            <label>Pupil-teacher ratio (ptratio)</label>
+            <input type="text" name="ptratio" required>
+            <input type="submit" value="Predict">
+        </form>
+        {% if prediction_text %}
+            <h3>{{ prediction_text }}</h3>
+        {% endif %}
+    </div>
+</body>
+</html>
